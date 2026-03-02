@@ -1,0 +1,82 @@
+/* css/register.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap');
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #0e1117; color: #e8eaf6;
+  min-height: 100vh; display: flex;
+  align-items: center; justify-content: center;
+  padding: 16px;
+}
+
+body::before {
+  content: ''; position: fixed;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: #8b5cf6; filter: blur(100px); opacity: .1;
+  top: -150px; right: -150px; pointer-events: none;
+}
+
+.register-container { position: relative; z-index: 1; width: 100%; max-width: 460px; }
+
+.register-card {
+  background: #1e2333; border: 1px solid #2a3050;
+  border-radius: 20px; padding: 36px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  animation: slideUp .5s ease;
+}
+@keyframes slideUp { from{transform:translateY(30px);opacity:0} to{transform:none;opacity:1} }
+
+.reg-logo { text-align: center; margin-bottom: 24px; }
+.reg-logo span { font-size: 1.8rem; color: #4f8ef7; display: block; margin-bottom: 6px; }
+
+.register-card h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.15rem; margin-bottom: 4px; text-align: center;
+}
+.subtitle { color: #7c88b0; font-size: .82rem; margin-bottom: 22px; text-align: center; }
+
+.reg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.reg-grid .full { grid-column: 1/-1; }
+
+.input-wrap { position: relative; }
+.input-wrap i {
+  position: absolute; left: 13px; top: 50%;
+  transform: translateY(-50%); color: #4a5175; font-size: .82rem;
+}
+.input-wrap input {
+  width: 100%;
+  background: #151822; border: 1px solid #2a3050;
+  border-radius: 9px; padding: 11px 13px 11px 38px;
+  color: #e8eaf6; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .86rem; transition: border .2s;
+}
+.input-wrap input:focus {
+  outline: none; border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.12);
+}
+.input-wrap input[type="file"] { padding: 10px 13px 10px 38px; cursor: pointer; }
+
+button[onclick="register()"] {
+  width: 100%; margin-top: 16px; padding: 13px;
+  background: linear-gradient(135deg, #4f8ef7, #8b5cf6);
+  border: none; border-radius: 10px; color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .95rem; font-weight: 700; cursor: pointer;
+  transition: opacity .2s, transform .1s;
+}
+button[onclick="register()"]:hover { opacity: .9; }
+button[onclick="register()"]:active { transform: scale(.98); }
+
+.login-link { text-align: center; margin-top: 14px; color: #7c88b0; font-size: .82rem; }
+.login-link a { color: #8b5cf6; text-decoration: none; font-weight: 600; }
+.login-link a:hover { text-decoration: underline; }
+
+#regErr { color: #f7656a; font-size: .82rem; margin-top: 8px; min-height: 18px; text-align: center; }
+
+@media (max-width: 480px) {
+  .reg-grid { grid-template-columns: 1fr; }
+  .reg-grid .full { grid-column: 1/-1; }
+  .register-card { padding: 24px 20px; }
+}
